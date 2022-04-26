@@ -1,0 +1,24 @@
+services:
+  adimeo_drupal_monitoring.mail.manager:
+    class: Drupal\adimeo_drupal_monitoring\Manager\MailManager
+    arguments: ['@plugin.manager.mail', '@renderer']
+
+  adimeo_drupal_monitoring.api.manager:
+    class: Drupal\adimeo_drupal_monitoring\Manager\ApiManager
+    arguments: ['@serialization.json', '@http_client']
+
+  adimeo_drupal_monitoring.infos_fetcher.gateway:
+    class: Drupal\adimeo_drupal_monitoring\Gateway\InfosFetcherGateway
+    arguments: ['@update.manager', '@system.manager', '@database']
+
+  plugin.manager.apm_tracking:
+    class: Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingManager
+    parent: default_plugin_manager
+
+  adimeo_drupal_monitoring.processing.manager:
+    class: Drupal\adimeo_drupal_monitoring\Manager\TrackingManager
+    arguments: ['@plugin.manager.apm_tracking', '@config.factory']
+
+  adimeo_drupal_monitoring.sending.manager:
+    class: Drupal\adimeo_drupal_monitoring\Manager\SendingManager
+    arguments: ['@adimeo_drupal_monitoring.api.manager', '@adimeo_drupal_monitoring.mail.manager']

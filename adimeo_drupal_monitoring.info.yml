@@ -1,4 +1,4 @@
-name: adimeo_apm_tracking
+name: adimeo_drupal_monitoring
 type: module
 description: Suivi des informations du serveur par APM
 core_version_requirement: ^8 || ^9

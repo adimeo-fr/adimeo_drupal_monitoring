@@ -1,19 +1,19 @@
 <?php
 
-namespace Drupal\Tests\adimeo_apm_tracking\Unit\Controller;
+namespace Drupal\Tests\adimeo_drupal_monitoring\Unit\Controller;
 
-use Drupal\adimeo_apm_tracking\Controller\StatusReportController;
-use Drupal\adimeo_apm_tracking\Form\ConfigForm;
-use Drupal\adimeo_apm_tracking\Manager\TrackingManager;
-use Drupal\adimeo_apm_tracking\Exception\NoApiKeyHeaderException;
-use Drupal\adimeo_apm_tracking\Exception\WrongApiKeyHeaderException;
+use Drupal\adimeo_drupal_monitoring\Controller\StatusReportController;
+use Drupal\adimeo_drupal_monitoring\Form\ConfigForm;
+use Drupal\adimeo_drupal_monitoring\Manager\TrackingManager;
+use Drupal\adimeo_drupal_monitoring\Exception\NoApiKeyHeaderException;
+use Drupal\adimeo_drupal_monitoring\Exception\WrongApiKeyHeaderException;
 use Drupal\Tests\UnitTestCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @coversDefaultClass \Drupal\adimeo_apm_tracking\Controller\StatusReportController
- * @group adimeo_apm_tracking
+ * @coversDefaultClass \Drupal\adimeo_drupal_monitoring\Controller\StatusReportController
+ * @group adimeo_drupal_monitoring
  * @group adimeo_tools
  * @todo add all intended behaviors in tests
  * @author adimeo

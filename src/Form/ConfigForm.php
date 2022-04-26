@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\adimeo_apm_tracking\Form;
+namespace Drupal\adimeo_drupal_monitoring\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;

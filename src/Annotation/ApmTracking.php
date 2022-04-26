@@ -1,13 +1,13 @@
 <?php
 
-namespace Drupal\adimeo_apm_tracking\Annotation;
+namespace Drupal\adimeo_drupal_monitoring\Annotation;
 
 use Drupal\Component\Annotation\Plugin;
 
 /**
  * Defines a Apm tracking item annotation object.
  *
- * @see \Drupal\adimeo_apm_tracking\Plugin\ApmTrackingManager
+ * @see \Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingManager
  * @see plugin_api
  *
  * @Annotation

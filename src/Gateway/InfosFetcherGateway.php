@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\adimeo_apm_tracking\Gateway;
+namespace Drupal\adimeo_drupal_monitoring\Gateway;
 
 
-use Drupal\adimeo_apm_tracking\Gateway\Interfaces\FetcherInterface;
+use Drupal\adimeo_drupal_monitoring\Gateway\Interfaces\FetcherInterface;
 use Drupal\Core\Database\Connection;
 use Drupal\system\SystemManager;
 use Drupal\update\UpdateManagerInterface;

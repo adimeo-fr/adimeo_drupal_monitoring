@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\adimeo_apm_tracking\Exception;
+namespace Drupal\adimeo_drupal_monitoring\Exception;
 
 use Exception;
 use Throwable;

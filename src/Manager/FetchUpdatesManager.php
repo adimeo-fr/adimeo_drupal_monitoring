@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Drupal\adimeo_apm_tracking\Manager;
+namespace Drupal\adimeo_drupal_monitoring\Manager;
 
 
-use Drupal\adimeo_apm_tracking\Manager\Interfaces\FetchUpdatesInterface;
-use Drupal\adimeo_apm_tracking\Plugin\ApmTrackingBase;
+use Drupal\adimeo_drupal_monitoring\Manager\Interfaces\FetchUpdatesInterface;
+use Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingBase;
 
 abstract class FetchUpdatesManager extends ApmTrackingBase implements FetchUpdatesInterface {
 

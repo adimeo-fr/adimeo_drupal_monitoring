@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\adimeo_apm_tracking\Plugin;
+namespace Drupal\adimeo_drupal_monitoring\Plugin;
 
 use Drupal\Component\Plugin\PluginInspectionInterface;
 

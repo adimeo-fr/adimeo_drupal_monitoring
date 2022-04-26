@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Drupal\adimeo_apm_tracking\Manager;
+namespace Drupal\adimeo_drupal_monitoring\Manager;
 
-use Drupal\adimeo_apm_tracking\Plugin\ApmTrackingManager;
+use Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingManager;
 use Drupal\Core\Config\ConfigFactoryInterface;
 
 class TrackingManager
@@ -31,10 +31,10 @@ class TrackingManager
    */
   public function shouldRunCron()
   {
-    $lastTrackingDateCron = \Drupal::state()->get('adimeo_apm_tracking_last_cron');
+    $lastTrackingDateCron = \Drupal::state()->get('adimeo_drupal_monitoring_last_cron');
 
     if (date('d-m-Y') != $lastTrackingDateCron) {
-      \Drupal::state()->set('adimeo_apm_tracking_last_cron', date('d-m-Y'));
+      \Drupal::state()->set('adimeo_drupal_monitoring_last_cron', date('d-m-Y'));
       return true;
     }
 

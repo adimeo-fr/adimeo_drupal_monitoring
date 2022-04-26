@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\adimeo_apm_tracking\Manager;
+namespace Drupal\adimeo_drupal_monitoring\Manager;
 
 
 class SendingManager

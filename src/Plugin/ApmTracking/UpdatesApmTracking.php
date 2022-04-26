@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\adimeo_apm_tracking\Plugin\ApmTracking;
+namespace Drupal\adimeo_drupal_monitoring\Plugin\ApmTracking;
 
-use Drupal\adimeo_apm_tracking\Annotation\ApmTracking;
-use Drupal\adimeo_apm_tracking\Manager\FetchUpdatesManager;
-use Drupal\adimeo_apm_tracking\Plugin\ApmTrackingBase;
-use Drupal\adimeo_apm_tracking\Plugin\ApmTrackingInterface;
+use Drupal\adimeo_drupal_monitoring\Annotation\ApmTracking;
+use Drupal\adimeo_drupal_monitoring\Manager\FetchUpdatesManager;
+use Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingBase;
+use Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\update\UpdateManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;

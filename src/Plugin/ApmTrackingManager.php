@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\adimeo_apm_tracking\Plugin;
+namespace Drupal\adimeo_drupal_monitoring\Plugin;
 
 use Drupal\Core\Plugin\DefaultPluginManager;
 use Drupal\Core\Cache\CacheBackendInterface;
@@ -24,10 +24,10 @@ class ApmTrackingManager extends DefaultPluginManager {
    *   The module handler to invoke the alter hook with.
    */
   public function __construct(\Traversable $namespaces, CacheBackendInterface $cache_backend, ModuleHandlerInterface $module_handler) {
-    parent::__construct('Plugin/ApmTracking', $namespaces, $module_handler, 'Drupal\adimeo_apm_tracking\Plugin\ApmTrackingInterface', 'Drupal\adimeo_apm_tracking\Annotation\ApmTracking');
+    parent::__construct('Plugin/ApmTracking', $namespaces, $module_handler, 'Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingInterface', 'Drupal\adimeo_drupal_monitoring\Annotation\ApmTracking');
 
-    $this->alterInfo('adimeo_apm_tracking_apm_tracking_info');
-    $this->setCacheBackend($cache_backend, 'adimeo_apm_tracking_apm_tracking');
+    $this->alterInfo('adimeo_drupal_monitoring_apm_tracking_info');
+    $this->setCacheBackend($cache_backend, 'adimeo_drupal_monitoring_apm_tracking');
   }
 
 }

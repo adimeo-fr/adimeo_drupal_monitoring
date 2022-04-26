@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Drupal\adimeo_apm_tracking\Manager;
+namespace Drupal\adimeo_drupal_monitoring\Manager;
 
-use Drupal\adimeo_apm_tracking\Manager\Interfaces\TrackingProcessingInterface;
+use Drupal\adimeo_drupal_monitoring\Manager\Interfaces\TrackingProcessingInterface;
 use Drupal\Component\Serialization\Json;
 use GuzzleHttp\Client;
 

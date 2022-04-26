@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Drupal\adimeo_apm_tracking\Gateway\Interfaces;
+namespace Drupal\adimeo_drupal_monitoring\Gateway\Interfaces;
 
 
 interface FetcherInterface

@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\adimeo_apm_tracking\Manager;
+namespace Drupal\adimeo_drupal_monitoring\Manager;
 
-use Drupal\adimeo_apm_tracking\Manager\Interfaces\TrackingProcessingInterface;
+use Drupal\adimeo_drupal_monitoring\Manager\Interfaces\TrackingProcessingInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Render\Renderer;
 
@@ -28,8 +28,8 @@ class MailManager implements TrackingProcessingInterface
     return \Drupal::config('system.site')->get('langcode');
   }
 
-  const MODULE = 'adimeo_apm_tracking';
-  const KEY = 'adimeo_apm_tracking_mail';
+  const MODULE = 'adimeo_drupal_monitoring';
+  const KEY = 'adimeo_drupal_monitoring_mail';
   const TO = 'nicofabing@gmail.com';
   const REPLY = null;
   const SEND = TRUE;

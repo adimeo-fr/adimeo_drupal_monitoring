@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\adimeo_apm_tracking\Manager\Interfaces;
+namespace Drupal\adimeo_drupal_monitoring\Manager\Interfaces;
 
 interface TrackingProcessingInterface
 {

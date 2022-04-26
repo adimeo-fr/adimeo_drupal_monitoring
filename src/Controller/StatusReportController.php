@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\adimeo_apm_tracking\Controller;
+namespace Drupal\adimeo_drupal_monitoring\Controller;
 
-use Drupal\adimeo_apm_tracking\Form\ConfigForm;
-use Drupal\adimeo_apm_tracking\Manager\TrackingManager;
-use Drupal\adimeo_apm_tracking\Exception\NoApiKeyHeaderException;
-use Drupal\adimeo_apm_tracking\Exception\WrongApiKeyHeaderException;
+use Drupal\adimeo_drupal_monitoring\Form\ConfigForm;
+use Drupal\adimeo_drupal_monitoring\Manager\TrackingManager;
+use Drupal\adimeo_drupal_monitoring\Exception\NoApiKeyHeaderException;
+use Drupal\adimeo_drupal_monitoring\Exception\WrongApiKeyHeaderException;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -27,7 +27,7 @@ class StatusReportController extends ControllerBase {
 
   public static function create(ContainerInterface $container) {
     /** @var TrackingManager $trackingManager */
-    $trackingManager = $container->get('adimeo_apm_tracking.processing.manager');
+    $trackingManager = $container->get('adimeo_drupal_monitoring.processing.manager');
     $configFactory = $container->get('config.factory');
     return new static($trackingManager, $configFactory);
   }
