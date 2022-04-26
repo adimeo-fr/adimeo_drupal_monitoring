@@ -1,4 +1,4 @@
-drupal_monitoring.config:
+adimeo_drupal_monitoring.config:
   title: Adimeo Monitoring
-  route_name: drupal_monitoring.config
+  route_name: adimeo_drupal_monitoring.config
   parent: system.admin_config

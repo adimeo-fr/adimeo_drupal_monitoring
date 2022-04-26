@@ -32,7 +32,7 @@ class ApiManager implements MonitoringProcessingInterface
 
   public function send(array $data)
   {
-    $config = \Drupal::config('drupal_monitoring.config');
+    $config = \Drupal::config('adimeo_drupal_monitoring.config');
     $jsonData = $this->serializer->encode($data);
     $request = $this->client->post(self::API_URL, [
       'json' => [

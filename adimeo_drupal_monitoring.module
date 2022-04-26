@@ -11,7 +11,7 @@ function adimeo_drupal_monitoring_cron()
   if ($monitoringManager->shouldRunCron()) {
     $data = $monitoringManager->fetchData();
 
-    $config = \Drupal::config('drupal_monitoring.config');
+    $config = \Drupal::config('adimeo_drupal_monitoring.config');
 
     if ($config->get('drupal_monitoring_sending_method') === 'api') {
       $sendingManager->sendApi($data);

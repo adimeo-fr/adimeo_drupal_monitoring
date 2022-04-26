@@ -10,7 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
  */
 class ConfigForm extends ConfigFormBase
 {
-  const CONFIG_KEY = 'drupal_monitoring.config';
+  const CONFIG_KEY = 'adimeo_drupal_monitoring.config';
 
   const API_KEY_PARAM = 'apiKey';
 

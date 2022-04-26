@@ -1,4 +1,4 @@
-drupal_monitoring.config:
+adimeo_drupal_monitoring.config:
   path: '/admin/config/drupal_monitoring'
   defaults:
     _form: '\Drupal\adimeo_drupal_monitoring\Form\ConfigForm'
