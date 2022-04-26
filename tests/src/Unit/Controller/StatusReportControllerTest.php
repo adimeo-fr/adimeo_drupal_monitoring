@@ -4,7 +4,7 @@ namespace Drupal\Tests\adimeo_drupal_monitoring\Unit\Controller;
 
 use Drupal\adimeo_drupal_monitoring\Controller\StatusReportController;
 use Drupal\adimeo_drupal_monitoring\Form\ConfigForm;
-use Drupal\adimeo_drupal_monitoring\Manager\TrackingManager;
+use Drupal\adimeo_drupal_monitoring\Manager\MonitoringManager;
 use Drupal\adimeo_drupal_monitoring\Exception\NoApiKeyHeaderException;
 use Drupal\adimeo_drupal_monitoring\Exception\WrongApiKeyHeaderException;
 use Drupal\Tests\UnitTestCase;
@@ -33,9 +33,9 @@ class StatusReportControllerTest extends UnitTestCase {
   protected StatusReportController $statusReportController;
 
   protected function setUp(): void {
-    $trackingManager = $this->createMock(TrackingManager::class);
+    $monitoringManager = $this->createMock(MonitoringManager::class);
     $configFactory = $this->getConfigFactoryStub(self::MOCK_CONFIG);
-    $this->statusReportController = new StatusReportController($trackingManager, $configFactory);
+    $this->statusReportController = new StatusReportController($monitoringManager, $configFactory);
     parent::setUp();
   }
 

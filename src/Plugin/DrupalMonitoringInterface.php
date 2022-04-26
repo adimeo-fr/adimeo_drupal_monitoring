@@ -5,9 +5,9 @@ namespace Drupal\adimeo_drupal_monitoring\Plugin;
 use Drupal\Component\Plugin\PluginInspectionInterface;
 
 /**
- * Defines an interface for Apm tracking plugins.
+ * Defines an interface for Drupal Monitoring plugins.
  */
-interface ApmTrackingInterface extends PluginInspectionInterface {
+interface DrupalMonitoringInterface extends PluginInspectionInterface {
 
   public function label();
 

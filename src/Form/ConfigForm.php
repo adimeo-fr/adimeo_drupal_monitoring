@@ -10,7 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
  */
 class ConfigForm extends ConfigFormBase
 {
-  const CONFIG_KEY = 'apm_tracking.config';
+  const CONFIG_KEY = 'drupal_monitoring.config';
 
   const API_KEY_PARAM = 'apiKey';
 
@@ -27,7 +27,7 @@ class ConfigForm extends ConfigFormBase
    */
   public function getFormId()
   {
-    return 'apm_tracking_admin_config';
+    return 'drupal_monitoring_admin_config';
   }
 
   /**

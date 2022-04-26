@@ -1,10 +1,10 @@
 <?php
 
-namespace Drupal\adimeo_drupal_monitoring\Plugin\ApmTracking;
+namespace Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoring;
 
-use Drupal\adimeo_drupal_monitoring\Annotation\ApmTracking;
-use Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingBase;
-use Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingInterface;
+use Drupal\adimeo_drupal_monitoring\Annotation\DrupalMonitoring;
+use Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoringBase;
+use Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoringInterface;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -12,12 +12,12 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  *  Database size infos
  *
- * @ApmTracking(
+ * @DrupalMonitoring(
  *  id = "site_database_size",
  *  label = "Site database size"
  * )
  */
-class DatabaseSizeApmTracking extends ApmTrackingBase implements ApmTrackingInterface, ContainerFactoryPluginInterface
+class DatabaseSizeDrupalMonitoring extends DrupalMonitoringBase implements DrupalMonitoringInterface, ContainerFactoryPluginInterface
 {
 
   /**

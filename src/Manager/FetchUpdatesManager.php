@@ -5,9 +5,9 @@ namespace Drupal\adimeo_drupal_monitoring\Manager;
 
 
 use Drupal\adimeo_drupal_monitoring\Manager\Interfaces\FetchUpdatesInterface;
-use Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingBase;
+use Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoringBase;
 
-abstract class FetchUpdatesManager extends ApmTrackingBase implements FetchUpdatesInterface {
+abstract class FetchUpdatesManager extends DrupalMonitoringBase implements FetchUpdatesInterface {
 
   /**
    * @param array $project

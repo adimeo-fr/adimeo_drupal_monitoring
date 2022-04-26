@@ -11,13 +11,13 @@ services:
     class: Drupal\adimeo_drupal_monitoring\Gateway\InfosFetcherGateway
     arguments: ['@update.manager', '@system.manager', '@database']
 
-  plugin.manager.apm_tracking:
-    class: Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingManager
+  plugin.manager.drupal_monitoring:
+    class: Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoringManager
     parent: default_plugin_manager
 
   adimeo_drupal_monitoring.processing.manager:
     class: Drupal\adimeo_drupal_monitoring\Manager\TrackingManager
-    arguments: ['@plugin.manager.apm_tracking', '@config.factory']
+    arguments: ['@plugin.manager.drupal_monitoring', '@config.factory']
 
   adimeo_drupal_monitoring.sending.manager:
     class: Drupal\adimeo_drupal_monitoring\Manager\SendingManager

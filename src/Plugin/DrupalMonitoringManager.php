@@ -7,13 +7,13 @@ use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 
 /**
- * Provides the Apm tracking plugin manager.
+ * Provides the Drupal Monitoring plugin manager.
  */
-class ApmTrackingManager extends DefaultPluginManager {
+class DrupalMonitoringManager extends DefaultPluginManager {
 
 
   /**
-   * Constructs a new ApmTrackingPluginManager object.
+   * Constructs a new DrupalMonitoringPluginManager object.
    *
    * @param \Traversable $namespaces
    *   An object that implements \Traversable which contains the root paths
@@ -24,10 +24,10 @@ class ApmTrackingManager extends DefaultPluginManager {
    *   The module handler to invoke the alter hook with.
    */
   public function __construct(\Traversable $namespaces, CacheBackendInterface $cache_backend, ModuleHandlerInterface $module_handler) {
-    parent::__construct('Plugin/ApmTracking', $namespaces, $module_handler, 'Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingInterface', 'Drupal\adimeo_drupal_monitoring\Annotation\ApmTracking');
+    parent::__construct('Plugin/DrupalMonitoring', $namespaces, $module_handler, 'Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoringInterface', 'Drupal\adimeo_drupal_monitoring\Annotation\DrupalMonitoring');
 
-    $this->alterInfo('adimeo_drupal_monitoring_apm_tracking_info');
-    $this->setCacheBackend($cache_backend, 'adimeo_drupal_monitoring_apm_tracking');
+    $this->alterInfo('adimeo_drupal_monitoring_drupal_monitoring_info');
+    $this->setCacheBackend($cache_backend, 'adimeo_drupal_monitoring_drupal_monitoring');
   }
 
 }

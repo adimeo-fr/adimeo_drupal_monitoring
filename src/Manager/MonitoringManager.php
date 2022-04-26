@@ -3,24 +3,24 @@
 
 namespace Drupal\adimeo_drupal_monitoring\Manager;
 
-use Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingManager;
+use Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoringManager;
 use Drupal\Core\Config\ConfigFactoryInterface;
 
-class TrackingManager
+class MonitoringManager
 {
 
   /**
-   * @var ApmTrackingManager
+   * @var DrupalMonitoringManager
    */
-  private $apmTrackingManager;
+  private $drupalMonitoringManager;
   /**
    * @var ConfigFactoryInterface
    */
   private $config;
 
-  public function __construct(ApmTrackingManager $manager, ConfigFactoryInterface $config)
+  public function __construct(DrupalMonitoringManager $manager, ConfigFactoryInterface $config)
   {
-    $this->apmTrackingManager = $manager;
+    $this->drupalMonitoringManager = $manager;
     $this->config = $config;
   }
 
@@ -42,7 +42,7 @@ class TrackingManager
   }
 
   /**
-   * get data from all plugins type ApmTracking with the fetch method
+   * get data from all plugins type drupalMonitoring with the fetch method
    *
    * @return array
    */
@@ -66,26 +66,26 @@ class TrackingManager
   public function fetchConfigData()
   {
     return [
-      'site_id' => $this->config->get('apm_tracking_id'),
-      'site_environnement' => $this->config->get('apm_tracking_environnement'),
-      'sending_method' => $this->config->get('apm_tracking_sending_method'),
+      'site_id' => $this->config->get('drupal_monitoring_id'),
+      'site_environnement' => $this->config->get('drupal_monitoring_environnement'),
+      'sending_method' => $this->config->get('drupal_monitoring_sending_method'),
     ];
   }
 
   /**
-   *  Create instances for all apmTracking plugins
+   *  Create instances for all drupalMonitoring plugins
    *
    * @return array
    * @throws \Drupal\Component\Plugin\Exception\PluginException
    */
   public function createPluginInstances()
   {
-    $definitions = $this->apmTrackingManager->getDefinitions();
+    $definitions = $this->drupalMonitoringManager->getDefinitions();
 
     $instances = array();
     foreach ($definitions as $plugin_id => $plugin_definition) {
 
-      $instances[] = $this->apmTrackingManager->createInstance($plugin_id, []);
+      $instances[] = $this->drupalMonitoringManager->createInstance($plugin_id, []);
 
     }
 

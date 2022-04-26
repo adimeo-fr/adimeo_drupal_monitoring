@@ -1,10 +1,10 @@
 <?php
 
-namespace Drupal\adimeo_drupal_monitoring\Plugin\ApmTracking;
+namespace Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoring;
 
-use Drupal\adimeo_drupal_monitoring\Annotation\ApmTracking;
+use Drupal\adimeo_drupal_monitoring\Annotation\DrupalMonitoring;
 use Drupal\adimeo_drupal_monitoring\Manager\FetchUpdatesManager;
-use Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingInterface;
+use Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoringInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\update\UpdateManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -12,12 +12,12 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  *  Updates infos
  *
- * @ApmTracking(
+ * @DrupalMonitoring(
  *  id = "site_security_updates",
  *  label = "Site available security updates"
  * )
  */
-class SecurityUpdatesApmTracking extends FetchUpdatesManager implements ApmTrackingInterface, ContainerFactoryPluginInterface
+class SecurityUpdatesDrupalMonitoring extends FetchUpdatesManager implements DrupalMonitoringInterface, ContainerFactoryPluginInterface
 {
   /**
    * @var UpdateManagerInterface

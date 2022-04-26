@@ -2,7 +2,7 @@
 
 namespace Drupal\adimeo_drupal_monitoring\Manager\Interfaces;
 
-interface TrackingProcessingInterface
+interface MonitoringProcessingInterface
 {
   public function send(array $data);
 

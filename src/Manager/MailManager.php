@@ -2,11 +2,11 @@
 
 namespace Drupal\adimeo_drupal_monitoring\Manager;
 
-use Drupal\adimeo_drupal_monitoring\Manager\Interfaces\TrackingProcessingInterface;
+use Drupal\adimeo_drupal_monitoring\Manager\Interfaces\MonitoringProcessingInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Render\Renderer;
 
-class MailManager implements TrackingProcessingInterface
+class MailManager implements MonitoringProcessingInterface
 {
   /**
    * @var MailManagerInterface
@@ -45,12 +45,12 @@ class MailManager implements TrackingProcessingInterface
   {
     // defining email parameters
     $render = [
-      '#theme' => 'apm_tracking_mail',
+      '#theme' => 'drupal_monitoring_mail',
       '#message' => $message,
     ];
 
     $params['message'] = $this->renderer->renderRoot($render);
-    $params['subject'] = t('Daily tracking for : @sitename', array('@sitename' => self::SITE_NAME()));
+    $params['subject'] = t('Daily monitoring for : @sitename', array('@sitename' => self::SITE_NAME()));
     $params['options']['username'] = 'Admin';
 
     return $params;
@@ -63,9 +63,9 @@ class MailManager implements TrackingProcessingInterface
 
     // check if email was send and log the result
     if ($result['result'] == true) {
-      \Drupal::logger('tracking_cron')->info('Daily tracking email was sent successfully');
+      \Drupal::logger('monitoring_cron')->info('Daily monitoring email was sent successfully');
     } else {
-      \Drupal::logger('tracking_cron')->info('Daily tracking email could not be send');
+      \Drupal::logger('monitoring_cron')->info('Daily monitoring email could not be send');
     }
 
 

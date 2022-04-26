@@ -3,12 +3,12 @@
 
 namespace Drupal\adimeo_drupal_monitoring\Manager;
 
-use Drupal\adimeo_drupal_monitoring\Manager\Interfaces\TrackingProcessingInterface;
+use Drupal\adimeo_drupal_monitoring\Manager\Interfaces\MonitoringProcessingInterface;
 use Drupal\Component\Serialization\Json;
 use GuzzleHttp\Client;
 
 
-class ApiManager implements TrackingProcessingInterface
+class ApiManager implements MonitoringProcessingInterface
 {
 
   // TODO : API END POINT
@@ -32,15 +32,15 @@ class ApiManager implements TrackingProcessingInterface
 
   public function send(array $data)
   {
-    $config = \Drupal::config('apm_tracking.config');
+    $config = \Drupal::config('drupal_monitoring.config');
     $jsonData = $this->serializer->encode($data);
     $request = $this->client->post(self::API_URL, [
       'json' => [
         $jsonData
       ],
       'config' => [
-        'site_environnement' => $config->get('apm_tracking_environnement'),
-        'site_id' => $config->get('apm_tracking_id')
+        'site_environnement' => $config->get('drupal_monitoring_environnement'),
+        'site_id' => $config->get('drupal_monitoring_id')
       ]
     ]);
 

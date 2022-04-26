@@ -1,10 +1,10 @@
 <?php
 
-namespace Drupal\adimeo_drupal_monitoring\Plugin\ApmTracking;
+namespace Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoring;
 
-use Drupal\adimeo_drupal_monitoring\Annotation\ApmTracking;
-use Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingBase;
-use Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingInterface;
+use Drupal\adimeo_drupal_monitoring\Annotation\DrupalMonitoring;
+use Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoringBase;
+use Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoringInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\system\SystemManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -12,12 +12,12 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  *  Dashboard errors infos
  *
- * @ApmTracking(
+ * @DrupalMonitoring(
  *  id = "site_dashboard_errors",
  *  label = "Site dashboard errors"
  * )
  */
-class DashboardErrorsApmTracking extends ApmTrackingBase implements ApmTrackingInterface, ContainerFactoryPluginInterface
+class DashboardErrorsDrupalMonitoring extends DrupalMonitoringBase implements DrupalMonitoringInterface, ContainerFactoryPluginInterface
 {
 
   /**

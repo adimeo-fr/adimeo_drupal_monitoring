@@ -1,19 +1,19 @@
 <?php
 function adimeo_drupal_monitoring_cron()
 {
-  /** @var \Drupal\adimeo_drupal_monitoring\Manager\TrackingManager $trackingManager */
-  $trackingManager = \Drupal::service('adimeo_drupal_monitoring.processing.manager');
+  /** @var \Drupal\adimeo_drupal_monitoring\Manager\MonitoringManager $monitoringManager */
+    $monitoringManager = \Drupal::service('adimeo_drupal_monitoring.processing.manager');
 
   /** @var \Drupal\adimeo_drupal_monitoring\Manager\SendingManager $sendingManager */
   $sendingManager = \Drupal::service('adimeo_drupal_monitoring.sending.manager');
 
   // Only work one time per day, wait for the day to change
-  if ($trackingManager->shouldRunCron()) {
-    $data = $trackingManager->fetchData();
+  if ($monitoringManager->shouldRunCron()) {
+    $data = $monitoringManager->fetchData();
 
-    $config = \Drupal::config('apm_tracking.config');
+    $config = \Drupal::config('drupal_monitoring.config');
 
-    if ($config->get('apm_tracking_sending_method') === 'api') {
+    if ($config->get('drupal_monitoring_sending_method') === 'api') {
       $sendingManager->sendApi($data);
     } else {
       $sendingManager->sendEmail($data);

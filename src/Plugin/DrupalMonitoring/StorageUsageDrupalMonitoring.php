@@ -1,10 +1,10 @@
 <?php
 
-namespace Drupal\adimeo_drupal_monitoring\Plugin\ApmTracking;
+namespace Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoring;
 
-use Drupal\adimeo_drupal_monitoring\Annotation\ApmTracking;
-use Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingBase;
-use Drupal\adimeo_drupal_monitoring\Plugin\ApmTrackingInterface;
+use Drupal\adimeo_drupal_monitoring\Annotation\DrupalMonitoring;
+use Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoringBase;
+use Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoringInterface;
 use Drupal\Core\File\FileSystem;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -12,12 +12,12 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  *  Storage usage infos
  *
- * @ApmTracking(
+ * @DrupalMonitoring(
  *  id = "site_storage_usage",
  *  label = "Site storage usage"
  * )
  */
-class StorageUsageApmTracking extends ApmTrackingBase implements ApmTrackingInterface, ContainerFactoryPluginInterface
+class StorageUsageDrupalMonitoring extends DrupalMonitoringBase implements DrupalMonitoringInterface, ContainerFactoryPluginInterface
 {
 
 
