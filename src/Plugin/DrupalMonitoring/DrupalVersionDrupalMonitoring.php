@@ -10,8 +10,8 @@ use Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoringInterface;
  *  Drupal Version
  *
  * @DrupalMonitoring(
- *  id = "drupal_version",
- *  label = "Version de drupal du site"
+ *  id = "site_drupal_version",
+ *  label = "Version drupal du site"
  * )
  */
 class DrupalVersionDrupalMonitoring extends DrupalMonitoringBase implements DrupalMonitoringInterface
