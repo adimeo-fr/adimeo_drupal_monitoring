@@ -42,6 +42,7 @@ class InfosFetcherGateway implements FetcherInterface
     $dbSize = $this->fetchDbSize();
     $errors = $this->fetchDashboardErrors();
     $diskUsage = $this->fetchStorageUsed();
+    $drupalVersion = $this->fetchDrupalVersion();
 
     return [
       'infos' => $siteData,
@@ -69,6 +70,18 @@ class InfosFetcherGateway implements FetcherInterface
 
     return $siteData;
   }
+
+    /**
+     * Retrieve version of drupal site
+     *
+     * @return string
+     */
+    public function fetchDrupalVersion()
+    {
+        $drupalVersion = \Drupal::VERSION;
+
+        return $drupalVersion;
+    }
 
 
   /**
