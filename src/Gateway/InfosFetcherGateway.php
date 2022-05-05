@@ -12,64 +12,65 @@ use Drupal\update\UpdateManagerInterface;
 class InfosFetcherGateway implements FetcherInterface
 {
 
-  /**
-   * @var UpdateManagerInterface
-   */
-  private $updateManager;
-  /**
-   * @var SystemManager
-   */
-  private $systemManager;
-  /**
-   * @var Connection
-   */
-  private $database;
+    /**
+     * @var UpdateManagerInterface
+     */
+    private $updateManager;
+    /**
+     * @var SystemManager
+     */
+    private $systemManager;
+    /**
+     * @var Connection
+     */
+    private $database;
 
-  public function __construct(UpdateManagerInterface $updateManager, SystemManager $systemManager,
-                              Connection $database)
-  {
+    public function __construct(UpdateManagerInterface $updateManager, SystemManager $systemManager,
+                                Connection             $database)
+    {
 
-    $this->updateManager = $updateManager;
-    $this->systemManager = $systemManager;
-    $this->database = $database;
-  }
+        $this->updateManager = $updateManager;
+        $this->systemManager = $systemManager;
+        $this->database = $database;
+    }
 
 
-  public function fetchData()
-  {
-    $siteData = $this->fetchSiteInfos();
-    $updates = $this->fetchAvailableUpdates();
-    $dbSize = $this->fetchDbSize();
-    $errors = $this->fetchDashboardErrors();
-    $diskUsage = $this->fetchStorageUsed();
-    $drupalVersion = $this->fetchDrupalVersion();
+    public function fetchData()
+    {
+        $siteData = $this->fetchSiteInfos();
+        $updates = $this->fetchAvailableUpdates();
+        $dbSize = $this->fetchDbSize();
+        $errors = $this->fetchDashboardErrors();
+        $diskUsage = $this->fetchStorageUsed();
+        $drupalVersion = $this->fetchDrupalVersion();
 
-    return [
-      'infos' => $siteData,
-      'updates' => $updates,
-      'databaseSize' => $dbSize,
-      'dashboardErrors' => $errors,
-      'storageUsage' => [
-        'diskUsage' => $diskUsage[0],
-        'path' => $diskUsage[1],
-      ],
-    ];
+        return [
+            'infos' => $siteData,
+            'updates' => $updates,
+            'databaseSize' => $dbSize,
+            'dashboardErrors' => $errors,
+            'drupalVersion' => $drupalVersion,
+            'storageUsage' => [
+                'diskUsage' => $diskUsage[0],
+                'path' => $diskUsage[1],
+            ],
+        ];
 
-  }
+    }
 
-  /**
-   * Retrieve basic site infos
-   *
-   * @return array
-   */
-  public function fetchSiteInfos()
-  {
-    $siteData = array();
-    $config = \Drupal::config('system.site');
-    $siteData = $config->get();
+    /**
+     * Retrieve basic site infos
+     *
+     * @return array
+     */
+    public function fetchSiteInfos()
+    {
+        $siteData = array();
+        $config = \Drupal::config('system.site');
+        $siteData = $config->get();
 
-    return $siteData;
-  }
+        return $siteData;
+    }
 
     /**
      * Retrieve version of drupal site
@@ -84,86 +85,86 @@ class InfosFetcherGateway implements FetcherInterface
     }
 
 
-  /**
-   * Retrieve all available updates for Drupal and contributed modules
-   *
-   * @return array
-   */
-  public function fetchAvailableUpdates()
-  {
-    $projects = $this->updateManager->projectStorage('update_project_data');
+    /**
+     * Retrieve all available updates for Drupal and contributed modules
+     *
+     * @return array
+     */
+    public function fetchAvailableUpdates()
+    {
+        $projects = $this->updateManager->projectStorage('update_project_data');
 
-    $availableUpdates = array();
-    foreach ($projects as $project) {
-      if ($project['existing_version'] != $project['latest_version']) {
-        $availableUpdates[] = $project;
-      }
+        $availableUpdates = array();
+        foreach ($projects as $project) {
+            if ($project['existing_version'] != $project['latest_version']) {
+                $availableUpdates[] = $project;
+            }
+        }
+
+        return $availableUpdates;
+
     }
 
-    return $availableUpdates;
+    /**
+     * Retrieve size of the drupal database in MB
+     *
+     * @return array
+     */
+    public function fetchDbSize()
+    {
+        $dbinfos = $this->database->getConnectionOptions();
+        $dbName = $dbinfos['database'];
 
-  }
-
-  /**
-   * Retrieve size of the drupal database in MB
-   *
-   * @return array
-   */
-  public function fetchDbSize()
-  {
-    $dbinfos = $this->database->getConnectionOptions();
-    $dbName = $dbinfos['database'];
-
-    $query = $this->database->query('SELECT SUM(data_length + index_length) / 1024 / 1024
+        $query = $this->database->query('SELECT SUM(data_length + index_length) / 1024 / 1024
         AS "size"
         FROM information_schema.TABLES
         WHERE table_schema = :drupalDbName
         GROUP BY table_schema',
-      [':drupalDbName' => $dbName]);
+            [':drupalDbName' => $dbName]);
 
-    $result = (array)$query->fetch();
+        $result = (array)$query->fetch();
 
-    return $result;
+        return $result;
 
 
-  }
-
-  /**
-   * Retrieve errors showed on the Dashboard
-   *
-   * @return array
-   */
-  public function fetchDashboardErrors()
-  {
-
-    $requirements = $this->systemManager->listRequirements();
-
-    $errors = array();
-    // loop through to find errors
-    foreach ($requirements as $requirement) {
-      if (!empty($requirement['severity']) && $requirement['severity'] === 2) {
-        $errors[] = $requirement;
-      }
     }
 
-    return $errors;
-  }
+    /**
+     * Retrieve errors showed on the Dashboard
+     *
+     * @return array
+     */
+    public function fetchDashboardErrors()
+    {
 
-  /**
-   * Retrieve size of dir sites/default/files
-   *
-   * @return string
-   */
-  public function fetchStorageUsed()
-  {
-    /** @var \Drupal\Core\File\FileSystem $service */
-    $service = \Drupal::service('file_system');
+        $requirements = $this->systemManager->listRequirements();
 
-    $filesize = exec('du -sh ' . $service->realpath('public://'));
+        $errors = array();
+        // loop through to find errors
+        foreach ($requirements as $requirement) {
+            if (!empty($requirement['severity']) && $requirement['severity'] === 2) {
+                $errors[] = $requirement;
+            }
+        }
 
-    //$filesize = explode('/[\t]/', $filesize);
-    $filesize = preg_split('/[\t]/', $filesize);
-    return $filesize;
+        return $errors;
+    }
 
-  }
+    /**
+     * Retrieve size of dir sites/default/files
+     *
+     * @return string
+     */
+    public function fetchStorageUsed()
+    {
+        /** @var \Drupal\Core\File\FileSystem $service */
+        $service = \Drupal::service('file_system');
+
+        $filesize = exec('du -sh ' . $service->realpath('public://'));
+
+        //$filesize = explode('/[\t]/', $filesize);
+        $filesize = preg_split('/[\t]/', $filesize);
+        return $filesize;
+
+    }
 }
