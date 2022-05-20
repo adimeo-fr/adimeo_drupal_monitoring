@@ -43,6 +43,7 @@ class InfosFetcherGateway implements FetcherInterface
         $errors = $this->fetchDashboardErrors();
         $diskUsage = $this->fetchStorageUsed();
         $drupalVersion = $this->fetchDrupalVersion();
+        $listOfModules = $this->fetchListOfModules();
 
         return [
             'infos' => $siteData,
@@ -50,6 +51,7 @@ class InfosFetcherGateway implements FetcherInterface
             'databaseSize' => $dbSize,
             'dashboardErrors' => $errors,
             'drupalVersion' => $drupalVersion,
+            'listOfModules' => $listOfModules,
             'storageUsage' => [
                 'diskUsage' => $diskUsage[0],
                 'path' => $diskUsage[1],
@@ -82,6 +84,18 @@ class InfosFetcherGateway implements FetcherInterface
         $drupalVersion = \Drupal::VERSION;
 
         return $drupalVersion;
+    }
+
+    /**
+     * Retrieve list of modules
+     *
+     * @return string
+     */
+    public function fetchListOfModules()
+    {
+        $listOfModules = \Drupal::service('extension.list.module')->getAllInstalledInfo();
+
+        return $listOfModules;
     }
 
 
