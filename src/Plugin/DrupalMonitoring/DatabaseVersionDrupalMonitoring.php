@@ -10,7 +10,7 @@ use Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoringInterface;
  *  Drupal Version
  *
  * @DrupalMonitoring(
- *  id = "site_database_version",
+ *  id = "database_version",
  *  label = "Version de la base de donnée du site"
  * )
  */
