@@ -44,6 +44,8 @@ class InfosFetcherGateway implements FetcherInterface
         $diskUsage = $this->fetchStorageUsed();
         $drupalVersion = $this->fetchDrupalVersion();
         $listOfModules = $this->fetchListOfModules();
+        $databaseVersion = $this->fetchDatabaseVersion();
+        $phpVersion = $this->fetchPhpVersion();
 
         return [
             'infos' => $siteData,
@@ -52,6 +54,8 @@ class InfosFetcherGateway implements FetcherInterface
             'dashboardErrors' => $errors,
             'drupalVersion' => $drupalVersion,
             'listOfModules' => $listOfModules,
+            'databaseVersion' => $databaseVersion,
+            'phpVersion' => $phpVersion,
             'storageUsage' => [
                 'diskUsage' => $diskUsage[0],
                 'path' => $diskUsage[1],
@@ -180,5 +184,28 @@ class InfosFetcherGateway implements FetcherInterface
         $filesize = preg_split('/[\t]/', $filesize);
         return $filesize;
 
+    }
+
+
+    /**
+     * Return version name of database
+     *
+     * @return string
+     */
+    private function fetchDatabaseVersion()
+    {
+        $serviceDb = \Drupal::service('database');
+
+        return $serviceDb->version();
+    }
+
+    /**
+     * Return version php of site
+     *
+     * @return string
+     */
+    private function fetchPhpVersion()
+    {
+        return phpversion();
     }
 }

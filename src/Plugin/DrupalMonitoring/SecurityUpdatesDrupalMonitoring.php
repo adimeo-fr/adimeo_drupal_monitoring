@@ -2,7 +2,6 @@
 
 namespace Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoring;
 
-use Drupal\adimeo_drupal_monitoring\Annotation\DrupalMonitoring;
 use Drupal\adimeo_drupal_monitoring\Manager\FetchUpdatesManager;
 use Drupal\adimeo_drupal_monitoring\Plugin\DrupalMonitoringInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
